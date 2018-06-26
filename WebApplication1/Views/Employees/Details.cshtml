@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpCity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmpCity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpAdd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmpAdd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpMobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmpMobile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmpEmail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EmpId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

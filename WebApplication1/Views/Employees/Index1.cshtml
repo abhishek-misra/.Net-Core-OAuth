@@ -1,0 +1,130 @@
+﻿@model IEnumerable<WebApplication1.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered" id="empList">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpAdd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpMobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpEmail)
+            </th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>
+                <input type="text" class="form-control filter-text" data-column="0"/>
+            </th>
+            <th>
+                <input type="text" class="form-control filter-text" data-column="1" />
+            </th>
+            <th>
+                <input type="text" class="form-control filter-text" data-column="2" />
+            </th>
+            <th>
+                <input type="text" class="form-control filter-text" data-column="3" />
+            </th>
+            <th>
+                <input type="text" class="form-control filter-text" data-column="4" />
+            </th>
+        </tr>
+    </thead>
+</table>
+@section Scripts{
+    <script src="~/js/JavaScript.js"></script>
+    <script>
+
+        var datatable;
+        $(document).ready(function () {
+            bindList();
+        });
+
+        $(document).on("change", ".filter-text", function () {
+            debugger;
+            var testt = $(this).val();
+            var column = $(this).attr("data-column");
+            datatable.columns(column).search(testt).draw();
+        });
+
+        function bindList() {
+            if ($.fn.DataTable.isDataTable("#empList")) {
+                $("#empList").DataTable().destroy();
+            }
+            datatable = $("#empList")
+                .DataTable({
+                    "sAjaxSource": "/Employees/GetEmployeeList/",
+                    "bServerSide": true,
+                    //"rowReorder": {
+                    //    "dataSrc": "ThemeIndex"
+
+                    //},
+                    "language": {
+                        "emptyTable": "No record found."
+                    },
+                    "ordering": false,
+                    "bProcessing": true,
+                    "bSearchable": true,
+                    "bDestroy": true,
+                    "order": [[0, "asc"]],
+                    "columns": [
+                        {
+                            "data": "empName",
+                            "autoWidth": false,
+                            "searchable": true,
+                            "sortable": false
+                        },
+                        {
+                            "data": "empCity",
+                            "autoWidth": false,
+                            "searchable": true,
+                            "sortable": false
+                        },
+                        {
+                            "data": "empAdd",
+                            "autoWidth": false,
+                            "searchable": true,
+                            "sortable": false
+                        },
+                        {
+                            "data": "empMobile",
+                            "autoWidth": false,
+                            "searchable": true,
+                            "sortable": false
+                        },
+                        {
+                            "data": "empEmail",
+                            "autoWidth": false,
+                            "searchable": true,
+                            "sortable": false
+                        }
+                    ]
+                });
+        }
+
+    </script>
+}
