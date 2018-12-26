@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger; //loggerFactory.CreateLogger<AccountController>();
+            _logger = logger;
         }
 
         //
