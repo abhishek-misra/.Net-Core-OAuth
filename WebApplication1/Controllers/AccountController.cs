@@ -30,10 +30,6 @@ namespace WebApplication1.Controllers
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            //IOptions<IdentityCookieOptions> identityCookieOptions,
-            //IEmailSender emailSender,
-            //ISmsSender smsSender,
-            //ILoggerFactory loggerFactory
             ILogger<AccountController> logger)
         {
             _userManager = userManager;
