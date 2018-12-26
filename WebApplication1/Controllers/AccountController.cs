@@ -38,9 +38,6 @@ namespace WebApplication1.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            // _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
-            // _emailSender = emailSender;
-            //_smsSender = smsSender;
             _logger = logger; //loggerFactory.CreateLogger<AccountController>();
         }
 
